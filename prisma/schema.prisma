@@ -1,0 +1,29 @@
+// ROOD Manufacturing — data model
+// Leads from the site (finish orders, drop reservations, parts questions).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Lead {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  intent    String // send-in finish, drop slot, flagship build, parts question, etc.
+  platform  String?
+  finish    String?
+  notes     String?
+  source    String   @default("website")
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  @@index([email])
+  @@index([createdAt])
+}

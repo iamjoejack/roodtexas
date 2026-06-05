@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0a0a0b;
+  --color-panel: #121214;
+  --color-panel-2: #18181b;
+  --color-line: #262629;
+  --color-blood: #d11f2a;
+  --color-blood-bright: #ef2733;
+  --color-bone: #f5f5f3;
+  --color-ash: #9a9a9e;
+  --color-ash-dim: #6d6d72;
+
+  --font-display: var(--font-oswald);
+  --font-sans: var(--font-inter);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--color-ink);
+    color: var(--color-bone);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: var(--color-blood);
+    color: #fff;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display), sans-serif;
+    font-weight: 700;
+    line-height: 1.03;
+    text-transform: uppercase;
+  }
+  /* thin, premium scrollbar */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--color-ink); }
+  ::-webkit-scrollbar-thumb { background: #2c2c30; border-radius: 6px; border: 2px solid var(--color-ink); }
+  ::-webkit-scrollbar-thumb:hover { background: #3a3a40; }
+}
+
+/* Scroll-reveal — Apple-style staged entrance */
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+    will-change: opacity, transform;
+  }
+  .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+  .eyebrow {
+    font-family: var(--font-display), sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-blood);
+  }
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
