@@ -54,7 +54,7 @@ export function Finishes() {
 
       {/* accent image */}
       <Reveal className="relative mt-14 overflow-hidden rounded-lg border border-line" delay={60}>
-        <div className="relative aspect-[21/7] w-full">
+        <div className="relative min-h-[420px] w-full sm:min-h-[340px] md:min-h-0 md:aspect-[21/7]">
           <Image
             src="/img/ar-charging-handle.jpg"
             alt="Finished AR-15 detail by ROOD Manufacturing"
@@ -62,12 +62,12 @@ export function Finishes() {
             sizes="(max-width: 1180px) 100vw, 1180px"
             className="object-cover object-center brightness-90"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/30 to-transparent" />
-          <div className="absolute inset-y-0 left-0 flex max-w-md flex-col justify-center p-8 md:p-12">
+          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/30 md:bg-gradient-to-r md:from-ink/90 md:via-ink/30 md:to-transparent" />
+          <div className="absolute inset-0 flex flex-col justify-end p-7 md:max-w-md md:justify-center md:p-12">
             <p className="font-display text-[clamp(22px,3vw,34px)] uppercase leading-tight">
               Finish artistry, not a parts list
             </p>
-            <p className="mt-3 text-sm text-ash">
+            <p className="mt-3 max-w-md text-sm text-ash">
               You own the firearm. We sell the finish, the detail work, and the turnaround. Pricing reflects
               difficulty and craft.
             </p>
